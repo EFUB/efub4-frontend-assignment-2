@@ -1,0 +1,18 @@
+{
+  "name": "efub4-frontend-assignment-2",
+  "version": "1.0.0",
+  "description": "💙 이펍 4기 프론트엔드 2학기 세미나 과제 제출 레포지토리",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "watch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "typescript": "^5.6.2"
+  }
+}
