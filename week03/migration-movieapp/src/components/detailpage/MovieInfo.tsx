@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import {Movie} from "../../types/movieTypes";
 
 // 영화 정보 컴포넌트
-const MovieInfo = ({ info }) => {
+const MovieInfo = ({ info }: {info: Movie}) => {
   const navigate = useNavigate();
   return (
     <Wrapper>

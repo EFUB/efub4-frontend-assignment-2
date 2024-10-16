@@ -1,9 +1,14 @@
 import React from "react";
 import { styled } from "styled-components";
 import MovieItem from "./MovieItem";
+import {Movie} from "../../types/movieTypes";
 
 // 전체 탭 컴포넌트
-const TotalMovies = ({ movies }) => {
+interface TotalMoviesProps {
+  movies: Movie[];
+}
+
+const TotalMovies: React.FC<TotalMoviesProps> = ({ movies }) => {
   return (
     <Wrapper>
       {movies.map((el) => {

@@ -1,9 +1,10 @@
 import React from "react";
 import { styled } from "styled-components";
 import CastItem from "./CastItem";
+import {Cast} from "../../types/movieTypes";
 
 // 영화 배우 목록 컴포넌트
-const MovieCasts = ({ casts }) => {
+const MovieCasts = ({ casts }: {casts: Cast[]}) => {
   return (
     <Wrapper>
       <Divider />

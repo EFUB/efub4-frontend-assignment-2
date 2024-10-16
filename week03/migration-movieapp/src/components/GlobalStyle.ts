@@ -1,6 +1,9 @@
 import { createGlobalStyle } from "styled-components";
+import { GlobalStyleProps } from "../types/globalStyleProps";
 
-const GlobalStyle = createGlobalStyle`
+
+
+const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   :root {
     /* color */
     --background: ${({ isLightMode }) => (isLightMode ? "#fff" : "#09090a")};

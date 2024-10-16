@@ -1,27 +1,36 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import { styled } from "styled-components";
 
 import Header from "../components/Header";
 import TotalMovies from "../components/mainpage/TotalMovies";
 import RecommendMovies from "../components/mainpage/RecommendMovies";
 import Loading from "../components/Loading";
+// 타입 import
+import {Movie} from "../types/movieTypes";
+import {MovieApiResponse} from "../types/axiosTypes";
 
 const MainPage = () => {
-  const [loading, setLoading] = useState(true); // 로딩 버튼
-  const [movies, setMovies] = useState([]); // 영화 리스트
-  const [isSelectTotal, setIsSelectTotal] = useState(false); // 탭 - 전체 선택할 경우 true
+  // 데이터 받기 전 로딩 상태
+  const [loading, setLoading] = useState<boolean>(true);
+  // 영화 리스트 데이터
+  const [movies, setMovies] = useState<Movie[]>([]);
+  // 선택한 데이터
+  const [isSelectTotal, setIsSelectTotal] = useState<boolean>(false);
 
+  // api response 데이터에 타입 추가
   const getMovies = async () => {
-    const data = await axios.get(
-      "https://yts.mx/api/v2/list_movies.json?limit=40"
-    );
-    setLoading(false); // loading 중단
-    setMovies(data.data.data.movies);
+    const response: AxiosResponse<MovieApiResponse> = await axios.get(
+        "https://yts.mx/api/v2/list_movies.json?limit=40");
+    setLoading(false);
+    setMovies(response.data.data.movies);
   };
 
   useEffect(() => {
-    getMovies(); // 영화 api 리스트 데이터 받아오기
+    const fetchMovies = async () => {
+      await getMovies();
+    }
+    fetchMovies();
   }, []);
 
   const onBtnClick = () => {

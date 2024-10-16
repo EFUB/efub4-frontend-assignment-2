@@ -1,34 +1,22 @@
-// 액션 생성 함수
-export const setLightMode = () => {
-  return {
-    type: "LIGHTMODE",
-  };
-};
-export const setDarkMode = () => {
-  return {
-    type: "DARKMODE",
-  };
-};
+// themeReducer
 
-// 초기상태
-const initialState = {
-  isLightMode: false,
-};
+import {ThemeState, ThemeActionTypes, SET_LIGHT_MODE, SET_DARK_MODE} from "../types/storeTypes";
 
-// 리듀서 함수
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case "LIGHTMODE":
-      return {
-        isLightMode: true,
-      };
-    case "DARKMODE":
-      return {
-        isLightMode: false,
-      };
-    default: // 해당되는 상태가 없을 때 상태 그대로 리턴
-      return state;
-  }
+// 초기 theme 상태 정의
+const initialState: ThemeState = {
+    isLightMode: false,
+}
+
+// 리듀서 정의
+const reducer = (state = initialState, action: ThemeActionTypes): ThemeState => {
+    switch (action.type){
+        case SET_LIGHT_MODE:
+            return {isLightMode: true};
+        case SET_DARK_MODE:
+            return {isLightMode: false};
+        default:
+            return state;
+    }
 }
 
 export default reducer;

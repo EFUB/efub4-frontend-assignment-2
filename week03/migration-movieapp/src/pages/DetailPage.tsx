@@ -6,20 +6,21 @@ import Header from "../components/Header";
 import Loading from "../components/Loading";
 import MovieInfo from "../components/detailpage/MovieInfo";
 import MovieCasts from "../components/detailpage/MovieCasts";
+import {Movie} from "../types/movieTypes";
 
 const DetailPage = () => {
   const params = useParams();
   const movieId = params.id; // 영화 id
 
-  const [loading, setLoading] = useState(true); // 로딩 버튼
-  const [detail, setDetail] = useState([]); // 영화 상세 정보
+  const [loading, setLoading] = useState<boolean>(true);
+  const [detail, setDetail] = useState<Movie>(); // 영화 상세 정보
 
   const getMovies = async () => {
     const data = await axios.get(
       `https://yts.mx/api/v2/movie_details.json?movie_id=${movieId}&with_cast=true`
     );
 
-    setLoading(false); // loading 중단
+    setLoading(false);
     setDetail(data.data.data.movie);
   };
 
@@ -35,8 +36,8 @@ const DetailPage = () => {
           <Loading />
         ) : (
           <>
-            <MovieInfo info={detail} />
-            {detail.cast && <MovieCasts casts={detail.cast} />}
+            {detail && <MovieInfo info={detail} />}
+            {detail?.cast && <MovieCasts casts={detail.cast} />}
           </>
         )}
       </Wrapper>

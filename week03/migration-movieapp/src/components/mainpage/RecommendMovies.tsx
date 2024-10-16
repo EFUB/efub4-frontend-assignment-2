@@ -1,9 +1,14 @@
 import React from "react";
 import { styled } from "styled-components";
 import Carousel from "./Carousel";
+import {Movie} from "../../types/movieTypes";
+
+interface RecommendMoviesProps {
+    movies: Movie[];
+}
 
 // 추천 탭 컴포넌트
-const RecommendMovies = ({ movies }) => {
+const RecommendMovies: React.FC<RecommendMoviesProps> = ({movies}) => {
   const popularMovies = movies.slice(0, 10); // 인기 영화
 
   const comedyMovies = movies.filter(

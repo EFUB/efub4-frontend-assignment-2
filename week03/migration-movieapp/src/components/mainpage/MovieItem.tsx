@@ -1,9 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import {Movie} from "../../types/movieTypes";
+
+interface MovieItemProps{
+    id: Movie["id"];
+    image: Movie["medium_cover_image"];
+}
 
 // 영화 포스터 컴포넌트
-const MovieItem = ({ id, image }) => {
+const MovieItem = ({ id, image }: MovieItemProps) => {
   const navigate = useNavigate();
   return (
     <Poster onClick={() => navigate(`/detail/${id}`)}>

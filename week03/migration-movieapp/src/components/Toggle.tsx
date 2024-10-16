@@ -1,16 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { setLightMode, setDarkMode } from "../redux/reducer";
+import { RootState } from "../redux/store";
+import {setLightMode, setDarkMode} from "../redux/actions";
+import {AppDispatch} from "../redux/store";
 
 const Toggle = () => {
-  // useSelector로 현재 상태 받아오기
-  const lightMode = useSelector((state) => state.isLightMode);
+  // useSelector 현재 상태 받아오기
+  const lightMode = useSelector((state: RootState) => state.isLightMode);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   // 모드 변경
-  const changeMode = (checked) => {
+  const changeMode = (checked: boolean) => {
     if (checked) {
       // dispatch
       dispatch(setLightMode());
@@ -30,9 +32,9 @@ const Toggle = () => {
         onChange={(e) => changeMode(e.target.checked)}
       />
 
-      <label for="toggle" className="toggleSwitch">
+      <label htmlFor="toggle" className="toggleSwitch">
         <span className="toggleButton">
-          {/* 여기 useSelector로 상태 받아와서 이미지 바꾸기 */}
+            {lightMode ? (<></>) : (<></>)}
         </span>
       </label>
     </ToggleStyle>

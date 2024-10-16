@@ -1,9 +1,10 @@
 import React from "react";
 import { styled } from "styled-components";
 import thumbnail from "../../assets/ic_thumbnail.png";
+import {Cast} from "../../types/movieTypes";
 
 // 각 영화 배우 컴포넌트
-const CastItem = ({ cast }) => {
+const CastItem = ({ cast }: {cast: Cast}) => {
   return (
     <Wrapper>
       <ActorImage
